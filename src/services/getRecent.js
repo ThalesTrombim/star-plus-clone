@@ -5,6 +5,5 @@ export async function getRecent() {
 
     const json = await data.json();
 
-    console.log(json.results.length)
     return json.results;
 }
