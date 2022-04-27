@@ -3,23 +3,28 @@ import { FlatList, View, Dimensions, Text, Image } from 'react-native';
 
 import { style } from './style';
 
-function TrendingCarousel({ image }) {
-    const styles = style.trending;
-
-    return (
-        <View style={{viewWidth,  alignItems: 'center', color: '#FFF', styles}}>
-            <Image source={{uri: image}} style={{width: imageW, height: imageH, resizeMode:'stretch', marginHorizontal: 6 }} />
-        </View>
-    )
-}
-
 const { width, height } = Dimensions.get('screen');
 const viewWidth = width / 4;
 const imageW = width * 0.28;
 const imageH = imageW * 1.25;
+const widthSize = width * 0.45;
+const heightSize = imageW * 1.85;
 
-function Carousel({ getList, title, id='' }) {
+function TrendingCarousel({ image, size, sHeight }) {
+    const styles = style.trending;
+
+    return (
+        <View style={{viewWidth,  alignItems: 'center', color: '#FFF', styles}}>
+            <Image source={{uri: image}} style={{width: size, height: sHeight, resizeMode:'stretch', marginHorizontal: 6 }} />
+        </View>
+    )
+}
+
+function Carousel({ getList, title, id='', spot = false }) {
     const [ list, setList ] = useState([]);
+    const [ width, setWidth ] = useState(imageW)
+    const [ height, setHeight ] = useState(imageH)
+    
 
     async function handleList() {
         const newData = await getList(id);
@@ -28,6 +33,10 @@ function Carousel({ getList, title, id='' }) {
 
     useEffect(() => {
         handleList()
+        if(spot == true){
+            setWidth(widthSize); 
+            setHeight(heightSize); 
+        }
     }, [])
 
     return (
@@ -42,7 +51,7 @@ function Carousel({ getList, title, id='' }) {
                 renderItem={({item}) => {
                     const img = `https://image.tmdb.org/t/p/original${item.poster_path}`
                     return (
-                        <TrendingCarousel image={img} title={'adicionados recentemente'}/>
+                        <TrendingCarousel image={img} title={'adicionados recentemente'} size={width} sHeight={height}/>
                     )
                 }}
             />

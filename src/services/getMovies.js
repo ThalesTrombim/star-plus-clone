@@ -36,10 +36,18 @@ async function getByGender(id) {
     return json.results;
 }
 
+async function getSpot() {
+    const data = await fetch(`${apiBase}/trending/movie/day?api_key=${apiKey}&language=pt-BR&page=4`)
+
+    const json = await data.json();
+    
+    return json.results;
+}
+
 function shuffleArray(inputArray){
     const newArray = inputArray.sort(()=> Math.random() - 0.5);
 
     return newArray;
 }
 
-export { getRecent, getMain, shuffleArray, getByGender }
+export { getRecent, getMain, shuffleArray, getByGender, getSpot }
