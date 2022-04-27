@@ -25,8 +25,8 @@ function Home({ navigation }) {
     return (
         <SafeAreaView style={style.homeContainer}>
             <ScrollView bounces={false} >
-                <StatusBar hidden />
-                <Nav />
+                {/* <StatusBar hidden />
+                <Nav /> */}
                 {/* <Button
                     title="movies"
                     onPress={() => navigation.push('movies')}

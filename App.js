@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { MoviesPage } from './src/screens/movies';
 import { Home } from './src/screens/Home';
+import { Nav } from './src/components/Nav';
 
 function Main() {
   const Stack = createNativeStackNavigator();
@@ -15,10 +16,15 @@ function Main() {
         <Nav />
         
       </View> */}
-      <Stack.Navigator initialRouteName="home" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="movies" component={MoviesPage} />
-        <Stack.Screen name="home" component={Home} />
-      </Stack.Navigator>
+      {/* <View style={{backgroundColor: 'blue'}}> */}
+        <StatusBar hidden />
+          {/* <Nav /> */}
+        <Stack.Navigator initialRouteName="home" screenOptions={{  header: () => <Nav /> }}>
+          <Stack.Screen name="movies" component={MoviesPage} />
+          <Stack.Screen name="home" component={Home} />
+        </Stack.Navigator>
+
+      {/* </View> */}
     </NavigationContainer>
   )
 }
