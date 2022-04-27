@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, View, Dimensions, Text, Image } from 'react-native';
+
 import { style } from './style';
 
-function TrendingCarousel({ image, title }) {
+function TrendingCarousel({ image }) {
     const styles = style.trending;
 
     return (
         <View style={{viewWidth,  alignItems: 'center', color: '#FFF', styles}}>
-            <Image source={{uri: image}} style={{width: imageW, height: imageH, resizeMode:'cover', marginHorizontal: 6 }} />
+            <Image source={{uri: image}} style={{width: imageW, height: imageH, resizeMode:'stretch', marginHorizontal: 6 }} />
         </View>
     )
 }
@@ -17,20 +18,23 @@ const viewWidth = width / 4;
 const imageW = width * 0.28;
 const imageH = imageW * 1.25;
 
-function shuffleArray(inputArray){
-    const newArray = inputArray.sort(()=> Math.random() - 0.5);
+function Carousel({ getList, title, id='' }) {
+    const [ list, setList ] = useState([]);
 
-    return newArray;
-}
+    async function handleList() {
+        const newData = await getList(id);
+        setList(newData)
+    }
 
-function Carousel({ data }) {
-    const newData = shuffleArray(data).slice(0, 6)
+    useEffect(() => {
+        handleList()
+    }, [])
 
     return (
         <View>
-            <Text style={style.carouselTitle} >Adicionados Recentemente</Text>
+            <Text style={style.carouselTitle} >{ title }</Text>
             <FlatList 
-                data={newData}
+                data={list}
                 keyExtractor={(_, index) => index.toString()}
                 horizontal
                 pagingEnabled

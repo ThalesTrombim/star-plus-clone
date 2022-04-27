@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { View, Text, Image, Dimensions, FlatList, Animated } from 'react-native';
 
+import { shuffleArray } from '../../services/getMovies';
+
 const { width, height } = Dimensions.get('screen');
 const imageW = width * 0.95;
 const imageH = imageW * 1.20;
 let flat;
 
-function Slide({image, title}) {
+function Slide({ image }) {
 
     return (
         <View style={{width, alignItems: 'center' }}>
@@ -34,18 +36,19 @@ let scrollValue = 0, scrolled = 0;
     }, 5000);
 }
 
-function MainCarousel({ data, title }) {
+function MainCarousel({ data }) {
     const scrollX = new Animated.Value(0);
+    const newData = shuffleArray(data).slice(0, 6)
 
     useEffect(() => {
         if(data){
-            infiniteScroll(data)
+            infiniteScroll(newData)
         }
     }, [])
 
     return (
         <FlatList 
-            data={data}
+            data={newData}
             keyExtractor={(_, index) => index.toString()}
             horizontal
             pagingEnabled
