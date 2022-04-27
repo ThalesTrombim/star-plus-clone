@@ -12,19 +12,12 @@ function Main() {
 
   return (
     <NavigationContainer>
-      {/* <View style={style.homeContainer}>
-        <Nav />
-        
-      </View> */}
-      {/* <View style={{backgroundColor: 'blue'}}> */}
         <StatusBar hidden />
-          {/* <Nav /> */}
-        <Stack.Navigator initialRouteName="home" screenOptions={{  header: () => <Nav /> }}>
+
+        <Stack.Navigator initialRouteName="home" screenOptions={{  header: (props) => <Nav {...props} /> }}>
           <Stack.Screen name="movies" component={MoviesPage} />
           <Stack.Screen name="home" component={Home} />
         </Stack.Navigator>
-
-      {/* </View> */}
     </NavigationContainer>
   )
 }

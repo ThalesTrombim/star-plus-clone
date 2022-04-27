@@ -31,7 +31,7 @@ function Home({ navigation }) {
                     title="movies"
                     onPress={() => navigation.push('movies')}
                 /> */}
-                <View style={style.navButtons}>
+                {/* <View style={style.navButtons}>
                     <TouchableOpacity 
                         onPress={() => navigation.push('movies')} 
                     >
@@ -53,7 +53,7 @@ function Home({ navigation }) {
                             Espn
                         </Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
                 <MainCarousel  data={data} />
                 <Carousel getList={getMain} title={'Adicionados Recentemente'} />
