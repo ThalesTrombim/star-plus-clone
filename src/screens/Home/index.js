@@ -4,7 +4,7 @@ import { Carousel } from '../../components/Carousel';
 import { MainCarousel } from '../../components/MainCarousel';
 
 import { Nav } from '../../components/Nav';
-import { getRecent, getMain, getByGender } from '../../services/getMovies';
+import { getRecent, getMain, getByGender, getSpot } from '../../services/getMovies';
 import { style } from './style';
 
 const { width, height } = Dimensions.get('screen');
@@ -57,7 +57,8 @@ function Home({ navigation }) {
 
                 <MainCarousel  data={data} />
                 <Carousel getList={getMain} title={'Adicionados Recentemente'} />
-                <Carousel getList={getByGender} title={'Animações'} id={'16'}/>
+                <Carousel getList={getSpot} title={'Filmes em Destaque'} spot={true} />
+                <Carousel getList={getByGender} title={'Animações'} id={'16'} />
                 <Carousel getList={getByGender} title={'Comédias'} id={'35'}/>
                 <Carousel getList={getByGender} title={'Ficção Científica'} id={'878'}/>
             </ScrollView>
