@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { MoviesPage } from './src/screens/movies';
 import { Home } from './src/screens/Home';
-import { Nav } from './src/components/Nav';
+import { SeriesPage } from './src/screens/Series';
 
 function Main() {
   const Stack = createNativeStackNavigator();
@@ -17,6 +17,7 @@ function Main() {
         <Stack.Navigator initialRouteName="home" screenOptions={{  headerShown: false }}>
           <Stack.Screen name="movies" component={MoviesPage} />
           <Stack.Screen name="home" component={Home} />
+          <Stack.Screen name="series" component={SeriesPage} />
         </Stack.Navigator>
     </NavigationContainer>
   )

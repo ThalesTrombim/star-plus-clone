@@ -12,8 +12,8 @@ if(month <= 10) {
 
 const dateRecent = `${currentYear}-${monthFormated}-01`;
 
-async function getRecent(type, size) {
-    const data = await fetch(`${apiBase}/trending/all/week?api_key=${apiKey}&language=pt-BR`)
+async function getRecent(_, type = 'all') {
+    const data = await fetch(`${apiBase}/trending/${type}/week?api_key=${apiKey}&language=pt-BR`)
 
     const json = await data.json();
 
@@ -28,8 +28,8 @@ async function getMain(id, type = 'movie') {
     return json.results;
 }
 
-async function getByGender(id) {
-    const data = await fetch(`${apiBase}/discover/movie?api_key=${apiKey}&language=pt-BR&sort_by=popularity.desc&page=1&with_genres=${id}&with_watch_monetization_types=flatrate`)
+async function getByGender(id, type = 'movie') {
+    const data = await fetch(`${apiBase}/discover/${type}?api_key=${apiKey}&language=pt-BR&sort_by=popularity.desc&page=1&with_genres=${id}&with_watch_monetization_types=flatrate`)
     
     const json = await data.json();
     

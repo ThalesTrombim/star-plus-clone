@@ -20,14 +20,14 @@ function TrendingCarousel({ image, size, sHeight }) {
     )
 }
 
-function Carousel({ getList, title, id='', spot = false, styles }) {
+function Carousel({ getList, title, id='', spot = false, styles, type }) {
     const [ list, setList ] = useState([]);
     const [ width, setWidth ] = useState(imageW)
     const [ height, setHeight ] = useState(imageH)
-    
 
     async function handleList() {
-        const newData = await getList(id);
+        console.log(type)
+        const newData = await getList(id, type);
         setList(newData)
     }
 

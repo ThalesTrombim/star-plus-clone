@@ -21,7 +21,7 @@ function Nav({ navigation }) {
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => navigation.push('movies')} 
+                    onPress={() => navigation.push('series')} 
                 >
                     <Text style={style.buttons}>
                         Séries

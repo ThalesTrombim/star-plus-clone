@@ -9,7 +9,6 @@ const imageW = width * 0.95;
 const imageH = imageW * .5;
 
 function Slide({ image, title }) {
-
     return (
         <View style={{width, alignItems: 'center'}}>
             <Image source={{uri: image}} style={{width: imageW, height: imageH, resizeMode:'stretch', borderTopLeftRadius: 5, borderTopRightRadius: 5 }} />
@@ -23,11 +22,11 @@ function Slide({ image, title }) {
     )
 }
 
-function BigCarousel({ getList, id }) {
+function BigCarousel({ getList, id, type}) {
     const [ list, setList ] = useState([])
 
     async function handleList() {
-        const newData = await getList(id);
+        const newData = await getList(id, type);
         setList(newData)
     }
 
@@ -43,10 +42,10 @@ function BigCarousel({ getList, id }) {
             pagingEnabled
             scrollEventThrottle={16}
             decelerationRate={"normal"}
-            renderItem={({item}) => {
+            renderItem={({ item }) => {
                 const img = `https://image.tmdb.org/t/p/original${item.backdrop_path}`
                 return (
-                    <Slide image={img} title={item.title} />
+                    <Slide image={img} title={item.title || item.original_name} />
                 )
             }}
         />
