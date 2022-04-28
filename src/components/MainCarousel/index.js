@@ -12,7 +12,6 @@ function Slide({ image }) {
 
     return (
         <View style={{width, alignItems: 'center' }}>
-            <Text>{}</Text>
             <Image source={{uri: image}} style={{width: imageW, height: imageH, resizeMode:'stretch', borderRadius: 5 }} />
         </View>
     )

@@ -20,8 +20,8 @@ async function getRecent(type, size) {
     return json.results;
 }
 
-async function getMain() {
-    const data = await fetch(`${apiBase}/discover/movie?api_key=${apiKey}&language=pt-BR&sort_by=popularity.desc&page=1&primary_release_date.gte=${dateRecent}&with_watch_monetization_types=flatrate`)
+async function getMain(id, type = 'movie') {
+    const data = await fetch(`${apiBase}/discover/${type}?api_key=${apiKey}&language=pt-BR&sort_by=popularity.desc&page=${id}&primary_release_date.gte=${dateRecent}&with_watch_monetization_types=flatrate`)
     
     const json = await data.json();
     

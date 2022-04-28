@@ -14,7 +14,7 @@ function Main() {
     <NavigationContainer>
         <StatusBar hidden />
 
-        <Stack.Navigator initialRouteName="home" screenOptions={{  header: (props) => <Nav {...props} /> }}>
+        <Stack.Navigator initialRouteName="home" screenOptions={{  headerShown: false }}>
           <Stack.Screen name="movies" component={MoviesPage} />
           <Stack.Screen name="home" component={Home} />
         </Stack.Navigator>
