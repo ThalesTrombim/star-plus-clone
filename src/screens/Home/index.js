@@ -25,13 +25,13 @@ function Home({ navigation }) {
     return (
         <SafeAreaView style={style.homeContainer}>
             <ScrollView bounces={false} >
-                <StatusBar hidden />
-                <Nav />
+                {/* <StatusBar hidden /> */}
+                <Nav navigation={ navigation }/>
                 {/* <Button
                     title="movies"
                     onPress={() => navigation.push('movies')}
                 /> */}
-                <View style={style.navButtons}>
+                {/* <View style={style.navButtons}>
                     <TouchableOpacity 
                         onPress={() => navigation.push('movies')} 
                     >
@@ -53,10 +53,10 @@ function Home({ navigation }) {
                             Espn
                         </Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
                 <MainCarousel  data={data} />
-                <Carousel getList={getMain} title={'Adicionados Recentemente'} />
+                <Carousel getList={getMain} title={'Adicionados Recentemente'} id={'1'} />
                 <Carousel getList={getSpot} title={'Filmes em Destaque'} spot={true} />
                 <Carousel getList={getByGender} title={'Animações'} id={'16'} />
                 <Carousel getList={getByGender} title={'Comédias'} id={'35'}/>

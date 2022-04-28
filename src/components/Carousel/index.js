@@ -20,7 +20,7 @@ function TrendingCarousel({ image, size, sHeight }) {
     )
 }
 
-function Carousel({ getList, title, id='', spot = false }) {
+function Carousel({ getList, title, id='', spot = false, styles }) {
     const [ list, setList ] = useState([]);
     const [ width, setWidth ] = useState(imageW)
     const [ height, setHeight ] = useState(imageH)
@@ -40,7 +40,7 @@ function Carousel({ getList, title, id='', spot = false }) {
     }, [])
 
     return (
-        <View>
+        <View style={styles}>
             <Text style={style.carouselTitle} >{ title }</Text>
             <FlatList 
                 data={list}

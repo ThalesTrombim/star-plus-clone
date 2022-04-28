@@ -19,6 +19,8 @@ target 'starplus_clone' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'starplus_cloneTests' do
     inherit! :complete
     # Pods for testing
