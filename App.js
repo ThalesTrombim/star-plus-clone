@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MoviesPage } from './src/screens/movies';
 import { Home } from './src/screens/Home';
 import { SeriesPage } from './src/screens/Series';
+import { Movie } from './src/screens/movie';
 
 function Main() {
   const Stack = createNativeStackNavigator();
@@ -14,10 +15,11 @@ function Main() {
     <NavigationContainer>
         <StatusBar hidden />
 
-        <Stack.Navigator initialRouteName="home" screenOptions={{  headerShown: false }}>
+        <Stack.Navigator initialRouteName="movie" screenOptions={{  headerShown: false }}>
           <Stack.Screen name="movies" component={MoviesPage} />
           <Stack.Screen name="home" component={Home} />
           <Stack.Screen name="series" component={SeriesPage} />
+          <Stack.Screen name="movie" component={Movie} />
         </Stack.Navigator>
     </NavigationContainer>
   )

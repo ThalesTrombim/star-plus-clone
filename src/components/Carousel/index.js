@@ -26,7 +26,6 @@ function Carousel({ getList, title, id='', spot = false, styles, type }) {
     const [ height, setHeight ] = useState(imageH)
 
     async function handleList() {
-        console.log(type)
         const newData = await getList(id, type);
         setList(newData)
     }
